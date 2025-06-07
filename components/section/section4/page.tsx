@@ -49,7 +49,7 @@ const Section4 = () => {
                     <img
                         src="/images/mack-group.png"
                         alt="Mask Group"
-                        className="w-[1320px] h-[668px] object-cover rounded-lg shadow-md"
+                        className="w-[1320px] h-[668px] object-cover rounded-md shadow-md"
                     />
                 </div>
         </div>
