@@ -11,11 +11,11 @@ type PropsLayout = {
 };
 
 const RootLayout = ({ children }: PropsLayout) => {
-   return (
-       <AdminTemplate title="BURGER QUEEN" id="dashboard" menuList={MenuList}>
-           {children}
-       </AdminTemplate>
-   )
+    return (
+        <AdminTemplate title="BURGER QUEEN" id="dashboard" menuList={MenuList}>
+            {children}
+        </AdminTemplate>
+    )
 }
 
 export default RootLayout;
