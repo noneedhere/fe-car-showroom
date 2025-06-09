@@ -1,26 +1,39 @@
 import React from 'react';
 import CardQuickSearch from '@/components/card/cardQuickSearch/page';
+import CountUp from '@/components/animation/count/page';
 
 const Section2 = () => {
     return (
-        <div className='relative w-full h-[1000px] bg-[#30313E] flex justify-start px-20 pt-10'>
+        <div id="section2" className='relative w-full h-[1000px] bg-[#30313E] flex justify-start px-20 pt-10'>
             <img src='/images/DEALER.png' alt='Dealer' className='absolute left-1/2 top-60 -translate-x-1/2 -translate-y-1/3 h-[350px] w-auto z-0' />
             <div className='py-11'>
                 <div className='flex flex-col justify-center items-center py-36 px-20'>
                     <div className='flex justify-between w-full mb-8'>
                         <div className="text-start pr-9 pl-4 border-r border-gray-600">
-                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">900+</h1>
+                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">
+                                <CountUp to={900} duration={1.5} separator="," />
+                                +
+                            </h1>
                             <p className="min-w-[125px] text-lg">happy clients</p>
                         </div>
+
                         <div className="text-start pl-2 pr-9 border-r border-gray-600">
-                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">500+</h1>
+                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">
+                                <CountUp to={500} duration={1.5} separator="," />
+                                +
+                            </h1>
                             <p className="min-w-[125px] text-lg">available cars</p>
                         </div>
+
                         <div className="text-start">
-                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">30+</h1>
+                            <h1 className="mb-2 text-5xl font-extrabold text-[#2fb7dd]">
+                                <CountUp to={30} duration={1.5} />
+                                +
+                            </h1>
                             <p className="min-w-[125px] text-lg">years experience</p>
                         </div>
                     </div>
+
                     <div className="flex-col  max-w-[550px] text-center">
                         <p className="text-slate-400 text-sm mb-6 ml-4 text-start max-w-[470px]">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in velit.</p>
                         <div className="flex justify-center space-x-4">
@@ -31,8 +44,9 @@ const Section2 = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className='flex-shrink-0 overflow-visible flex items-center justify-center'>
-                    <img src='/images/dashboardMobil.png' alt='Car Dashboard' className='absolute h-[500px] w-auto top-36 right-[-10%]' />
+                    <img src='/images/dashboardMobil.png' alt='Car Dashboard' className='absolute h-[500px] w-auto top-36 right-[0%]' />
                 </div>
             </div>
             <div className='absolute left-44 -translate-x-1/2 text-start bottom-[300px]'>

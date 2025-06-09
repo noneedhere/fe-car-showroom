@@ -13,7 +13,7 @@ const CardDiscover = ({ icon, title, description, bgImage }: DiscoverItemProps) 
             className="w-[384px] h-[300px] rounded-xl flex flex-col justify-end p-8 relative"
             style={{ backgroundImage: `url('/images/${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-            <div className="flex flex-row items-center justify-between w-full relative z-20">
+            <div className="flex flex-row items-center justify-between w-full relative z-20 cursor-pointer hover:opacity-80">
                 <div className="flex flex-row items-center gap-4">
                     {icon && (
                         <img src={`/images/${icon}`} className="w-10 h-10 object-contain" alt="icon" />

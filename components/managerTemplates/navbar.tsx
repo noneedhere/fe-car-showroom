@@ -8,7 +8,6 @@ import './navbar.css';
 // tailwindcss: bg-dasar1
 type MenuType = {
     id: string;
-    icon: ReactNode;
     path: string;
     label: string;
 };

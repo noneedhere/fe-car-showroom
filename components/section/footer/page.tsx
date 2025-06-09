@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="bg-[#060B1D] w-screen h-[659px] flex flex-col items-center justify-center px-[120px] pt-24 pb-16">
-            <div className='bg-red w-full h-full flex flex-row gap-44 mb-12 justify-center border-b border-[#9899A6]'>
+        <div className="bg-[#060B1D] w-full h-[659px] flex flex-col items-center justify-center px-[120px] pt-24 pb-16">
+            <div id="footer" className='bg-red w-full h-full flex flex-row gap-44 mb-12 justify-center border-b border-[#9899A6]'>
                 <div className='flex flex-col'>
                     <h1 className='text-[24px] mb-7 font-bold'>Porsche</h1>
                     <p className='text-[16px] w-[280px]'>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
@@ -16,7 +16,7 @@ const Footer = () => {
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/telp.png" alt="" className='w-8 h-auto mr-4' />
-                            <p className='text-[16px]'>+62 812-0824-1293</p>
+                            <p className='text-[16px]'>+62 812-5237-5524</p>
                         </div>
 
                         <div className='flex flex-row items-center'>
@@ -32,32 +32,79 @@ const Footer = () => {
                     <div className='flex flex-col gap-5'>
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    const el = document.querySelector('#section1');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Home
+                            </p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    const el = document.querySelector('#section2');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                About Us
+                            </p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    const el = document.querySelector('#section5');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Car Model
+                            </p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    const el = document.querySelector('#section6');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Testimoni
+                            </p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    const el = document.querySelector('#section7');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Discover
+                            </p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Dashboard</p>
+                            <p
+                                className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                                onClick={() => {
+                                    window.location.href = '/shop';
+                                }}
+                            >
+                                Shop
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -68,22 +115,23 @@ const Footer = () => {
                     <div className='flex flex-col gap-5'>
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Car Listing</p>
+                            <p className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'>Car Listing</p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Car Details</p>
+                            <p className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'>Car Details</p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Car</p>
+                            <p className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'>Car</p>
                         </div>
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/arrow-left.png" alt="" className='w-2.5 h-auto mr-4' />
-                            <p className='text-[16px]'>Checkout</p>
+                            <p className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
+                            >Checkout</p>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ const TestimoniCard = () => (
                 </p>
             </div>
             <div className="text-center">
-                <h4 className="font-normal text-[#2fb7dd] text-xl">PEJUang</h4>
+                <h4 className="font-normal text-[#2fb7dd] text-xl">Pengangguran</h4>
                 <span className="text-gray-400 text-sm">Customer</span>
             </div>
         </div>

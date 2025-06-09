@@ -25,3 +25,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.mr-dafoe-regular {
+  font-family: "Mr Dafoe", cursive;
+  font-weight: 400;
+  font-style: italic;
+}
