@@ -3,7 +3,7 @@ import CardDiscover from '@/components/card/cardDiscover/page';
 
 const Section7 = () => {
     return (
-        <div className="bg-white w-screen h-[709px] flex flex-col items-center justify-center">
+        <div className="bg-white w-full h-[709px] flex flex-col items-center justify-center">
             <div className="flex flex-row w-full max-w-[1200px] pb-3 justify-between">
                 <div className='w-[694px] flex flex-col pt-[120px] justify-start items-start'>
                     <h2 className="text-black text-[43px] font-normal text-left">

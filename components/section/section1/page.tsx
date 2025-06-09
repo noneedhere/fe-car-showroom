@@ -10,7 +10,7 @@ const Section1 = () => {
                 playsInline
                 preload="auto"
                 className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-                src="/video/background-vid.mp4"
+                src="/videos/background-vid.mp4"
             />
             <div className="w-1/2 text-white min-w-[750px] px-20">
                 <h1 className="text-6xl font-bold leading-tight self-center">

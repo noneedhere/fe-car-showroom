@@ -32,7 +32,7 @@ const Section2 = () => {
                     </div>
                 </div>
                 <div className='flex-shrink-0 overflow-visible flex items-center justify-center'>
-                    <img src='/images/dashboardMobil.png' alt='Car Dashboard' className='absolute h-[500px] w-auto top-36 right-[-10%]' />
+                    <img src='/images/dashboardMobil.png' alt='Car Dashboard' className='absolute h-[500px] w-auto top-36 right-[0%]' />
                 </div>
             </div>
             <div className='absolute left-44 -translate-x-1/2 text-start bottom-[300px]'>

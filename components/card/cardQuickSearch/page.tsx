@@ -10,21 +10,18 @@ const VehicleSearch: React.FC = () => {
                         <label className="block text-md font-medium mb-0">Vehicle Body Type</label>
                         <select className="border-gray-300 rounded-md p-2 mt-2 h-12 w-[337px] text-start bg-white">
                             <option className="py-2">All Models</option>
-                            <option className="py-2">SUV</option>
-                            <option className="py-2">Sedan</option>
-                            <option className="py-2">Truck</option>
-                            <option className="py-2">Coupe</option>
-                            <option className="py-2">Convertible</option>
+                            <option className="py-2">718</option>
+                            <option className="py-2">911</option>
+                            <option className="py-2">Taycan</option>
                         </select>
                     </div>
                     <div className='flex flex-col items-start'>
                         <label className="block text-md font-medium mb-0 text-start w-full">Category</label>
                         <select className="border-gray-300 rounded-md p-2 mt-2 h-12 w-[337px] text-start bg-white">
-                            <option className="py-2">All Models</option>
-                            <option className="py-2">Luxury</option>
-                            <option className="py-2">Economy</option>
-                            <option className="py-2">Sport</option>
+                            <option className="py-2">All Categories</option>
+                            <option className="py-2">Gasoline</option>
                             <option className="py-2">Electric</option>
+                            <option className="py-2">Sport</option>
                         </select>
                     </div>
                 </div>
