@@ -29,8 +29,7 @@ const VehicleSearch: React.FC = () => {
                     </div>
                 </div>
                 <button
-                    type='submit' className="relative w-[200px] py-[15px] text-center font-bold border-2 border-[#2fb7dd] text-[#2fb7dd] hover:text-white duration-100 rounded-md overflow-hidden group mt-[65px]">
-                    <span className="absolute inset-0 w-0 h-full bg-[#2fb7dd] transition-all duration-500 group-hover:w-full border-none"></span>
+                    type='submit' className="w-52 py-4 m-10 bg-[#2fb7dd] text-white font-semibold rounded-lg hover:bg-[#2199bb] transition-colors">
                     <span className="relative z-10">FIND IT NOW</span>
                 </button>
             </form>
