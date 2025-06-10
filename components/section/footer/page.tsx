@@ -100,7 +100,7 @@ const Footer = () => {
                             <p
                                 className='text-[16px] hover:text-[#2fb7dd] cursor-pointer'
                                 onClick={() => {
-                                    window.location.href = '/shop';
+                                    window.location.href = '/sales/shop';
                                 }}
                             >
                                 Shop

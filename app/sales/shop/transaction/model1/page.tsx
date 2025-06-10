@@ -1,8 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Navbar() {
-    const [mainImage, setMainImage] = useState<string>("/images/ts1.webp");
+    const router = useRouter();
+    const [mainImage, setMainImage] = useState<string>("/images/cayman718.webp");
 
     const [showModal, setShowModal] = useState(false);
     const [buyerName, setBuyerName] = useState("");
@@ -10,9 +12,9 @@ export default function Navbar() {
     const [note, setNote] = useState("");
 
     const thumbnails = [
-        "/images/ts1.webp",
-        "/images/ts2.webp",
-        "/images/ts3.webp",
+        "/images/cayman718.webp",
+        "/images/cayman718.2.webp",
+        "/images/cayman718.3.webp",
     ];
 
     const handleBuyClick = () => {
@@ -39,7 +41,7 @@ export default function Navbar() {
         };
 
         try {
-            const res = await fetch("http://localhost:9000/sale/add/", {
+            const res = await fetch("http://localhost:3000/sale/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,12 +68,11 @@ export default function Navbar() {
             <nav className="w-full border-b shadow-sm px-10 py-6 flex items-center justify-between text-sm bg-slate-50">
                 {/* Left Section */}
                 <div className="flex items-center gap-4 text-[#181818]">
-                    <button className="flex items-center gap-1">
-                        <span className="text-xl">☰</span>
-                        <span className="text-lg">Menu</span>
-                    </button>
-                    <button className="flex items-center gap-1">
-                        ← <span>Change model</span>
+                    <button
+                        className="flex items-center gap-1"
+                        onClick={() => router.push("/sales/shop")}
+                    >
+                        ←   <span>Back to Shop</span>
                     </button>
                 </div>
 

@@ -1,17 +1,16 @@
-import { IUser } from "@/app/types";
+import { User } from "@/app/types";
 import { getCookies } from "@/lib/server-cookies";
 import { BASE_API_URL, BASE_IMAGE_PROFILE } from "@/global";
 import { get } from "@/lib/api-bridge";
 import { AlertInfo } from "@/components/alert";
 import Image from 'next/image';
-import Search from "./search";
 import AddUser from "./addUser";
 import DeleteUser from "./deleteUser";
 import EditUser from "./editUser";
 import axios from "axios";
 import { cookies } from "next/headers";
 
-export const getUser = async (): Promise<IUser[] | undefined> => {
+export const getUser = async (): Promise<User[] | undefined> => {
     const token = (await cookies()).get("token")?.value;
     console.log("Token from cookies:", token);
     console.log("Full API URL:", `${BASE_API_URL}/user/getAll`);
@@ -22,7 +21,7 @@ export const getUser = async (): Promise<IUser[] | undefined> => {
     }
 
     try {
-        const response = await axios.get(`${BASE_API_URL}/getAll`, {
+        const response = await axios.get(`${BASE_API_URL}/user/getAll`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -40,10 +39,11 @@ export const getUser = async (): Promise<IUser[] | undefined> => {
 };
 
 
+
 const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) => {
     const params = await searchParams;
     const search = params.search ? params.search.toString() : ``
-    const User: IUser[] = await getUser() ?? []
+    const User: User[] = await getUser() ?? []
 
     console.log("Fetched User:", User);
 
@@ -55,11 +55,7 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
                 This page displays User data, allowing Users to view details,
                 search, and manage User items by adding, editing, or deleting them.
             </p>
-            <div className="flex justify-between items-center mb-4">
-                {/* Search Bar */}
-                <div className="flex items-center w-full max-w-md flex-grow">
-                    <Search url={`/manager/user`} search={search} />
-                </div>
+            <div className="flex justify-end items-end mb-4">
                 {/* Add Menu Button */}
                 <div className="ml-4">
                     <AddUser />
@@ -75,10 +71,6 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
                         <div className="m-2">
                             {User.map((data, index) => (
                                 <div key={`keyPrestasi${index}`} className={`flex flex-wrap shadow m-2`}>
-                                    <div className="w-full md:w-1/12 p-2">
-                                        <small className="text-sm text-black font-bold">Picture</small><br />
-                                        <Image width={40} height={40} src={`${BASE_IMAGE_PROFILE}/${data.profilePicture}`} className="rounded-sm overflow-hidden" alt="preview" unoptimized />
-                                    </div>
                                     <div className="w-full md:w-2/12 p-2">
                                         <small className="text-sm font-bold text-black text-primary">Name</small> <br />
                                         {data.name}
@@ -91,9 +83,9 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
                                         <small className="text-sm font-bold text-black text-primary">Role</small> <br />
                                         {data.role}
                                     </div>
-                                    <div className="w-full md:w-2/12 p-2">
-                                        <small className="text-sm font-bold text-black text-primary">Action</small><br />
-                                        <div className="flex gap-1">
+                                    <div className="w-full md:w-4/12 p-2 flex justify-end items-end flex-col">
+                                        <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />
+                                        <div className="flex gap-1 flex-row items-center">
                                             <EditUser selectedUser={data} />
                                             <DeleteUser selectedUser={data} />
                                         </div>

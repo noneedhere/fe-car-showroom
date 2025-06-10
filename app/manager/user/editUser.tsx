@@ -1,22 +1,22 @@
 "use client"
 
-import { IUser } from "@/app/types"
+import { User } from "@/app/types"
 import { BASE_API_URL } from "@/global"
 import { put } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useRef, useState } from "react"
 import { toast, ToastContainer } from "react-toastify"
-import { ButtonWarning, ButtonDanger, ButtonSuccess } from "@/components/button"
+import { ButtonWarning, ButtonDanger, ButtonSuccess } from "../../../components/button"
 import { InputGroupComponent } from "@/components/inputComponent"
 import Modal from "@/components/modal"
 import Select from "@/components/select"
 import FileInput from "@/components/FileInput"
 import { getCookies } from "@/lib/server-cookies"
 
-const EditUser = ({ selectedUser }: { selectedUser: IUser }) => {
+const EditUser = ({ selectedUser }: { selectedUser: User }) => {
     const [isShow, setIsShow] = useState<boolean>(false)
-    const [user, setUser] = useState<IUser>({ ...selectedUser })
+    const [user, setUser] = useState<User>({ ...selectedUser })
     const router = useRouter()
     const TOKEN = getCookie("token") || ""
     const [file, setFile] = useState<File | null>(null)
@@ -29,7 +29,7 @@ const EditUser = ({ selectedUser }: { selectedUser: IUser }) => {
     const handleSubmit = async (e: FormEvent) => {
         try {
             e.preventDefault()
-            const url = `${BASE_API_URL}/user/${selectedUser.id_User}`
+            const url = `${BASE_API_URL}/user/${user.id_user}`
             const { name, email, password, role } = user
             const payload = new FormData()
             payload.append("name", name || "")
@@ -97,10 +97,10 @@ const EditUser = ({ selectedUser }: { selectedUser: IUser }) => {
                             required={true} onChange={val => setUser({ ...user, role: val })}>
                             <option value="">--- Select Role ---</option>
                             <option value="MANAGER">MANAGER</option>
-                            <option value="CASHIER">CASHIER</option>
+                            <option value="SALES">SALES</option>
                         </Select>
 
-                        <FileInput acceptTypes={["application/pdf", "image/png", "image/jpeg", "image/jpg"]} id="profile_picture"
+                        <FileInput acceptTypes={["application/pdf", "image/png", "image/jpeg", "image/jpg"]} id="profilePicture"
                             label="Upload Picture (Max 2MB, PDF/JPG/JPEG/PNG)" onChange={f => setFile(f)} required={false} />
                     </div>
                     {/* end modal body */}

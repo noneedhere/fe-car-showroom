@@ -1,26 +1,32 @@
 'use client'
 
-import React from 'react';
-import Section1 from '@/components/section/section1/page';
-import Section2 from '@/components/section/section2/page';
-import Section3 from '@/components/section/section3/page';
-import Section4 from '@/components/section/section4/page';
-import Section5 from '@/components/section/section5/page';
-import Section6 from '@/components/section/section6/page';
-import Section7 from '@/components/section/section7/page';
-import Footer from '@/components/section/footer/page';
+import React, { useEffect, useState } from 'react';
 
 const HomePage = () => {
+    const [name, setName] = useState<string>("");
+
+    useEffect(() => {
+        // Ambil nama user dari cookie (bukan localStorage)
+        function getCookie(name: string) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop()?.split(';').shift() || "";
+            return "";
+        }
+        const userName = getCookie("name");
+        setName(userName);
+    }, []);
+
     return (
-        <div className="w-full flex flex-col">
-            <Section1/>
-            <Section2/>
-            <Section3/>
-            <Section4/>
-            <Section5/>
-            <Section6/>
-            <Section7/>
-            <Footer/>
+        <div className="w-full min-h-[300px] flex flex-col items-center justify-center" style={{ minHeight: "80vh" }}>
+            <div className="flex flex-col items-center justify-center text-center">
+                <h1 className="text-8xl font-bold text-[#2FB7DD]">
+                    Selamat Datang
+                </h1>
+                <h2 className='m-10 text-7xl font-bold text-[#066079]'>
+                    {name}
+                </h2>
+            </div>
         </div>
     );
 };

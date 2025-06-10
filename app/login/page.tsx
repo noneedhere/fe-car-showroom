@@ -16,7 +16,7 @@ const LoginPage = () => {
     const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-        const url = `${BASE_API_URL}/login`
+        const url = `${BASE_API_URL}/user/login`
         const payload = JSON.stringify({ email, password })
 
         const response = await axios.post(url, payload, {

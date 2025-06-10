@@ -1,5 +1,5 @@
 import AdminTemplate from "@/components/managerTemplates";
-import MenuList from "../menuList";
+import MenuList from "../../sales/menuList";
 
 export const metadata = {
     title: 'Home | Car Showroom',

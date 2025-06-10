@@ -1,8 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Navbar() {
-    const [mainImage, setMainImage] = useState<string>("/images/911GT31.webp");
+    const router = useRouter();
+    const [mainImage, setMainImage] = useState<string>("/images/ts1.webp");
 
     const [showModal, setShowModal] = useState(false);
     const [buyerName, setBuyerName] = useState("");
@@ -10,9 +12,9 @@ export default function Navbar() {
     const [note, setNote] = useState("");
 
     const thumbnails = [
-        "/images/911GT31.webp",
-        "/images/911GT32.webp",
-        "/images/911GT33.webp",
+        "/images/ts1.webp",
+        "/images/ts2.webp",
+        "/images/ts3.webp",
     ];
 
     const handleBuyClick = () => {
@@ -66,12 +68,11 @@ export default function Navbar() {
             <nav className="w-full border-b shadow-sm px-10 py-6 flex items-center justify-between text-sm bg-slate-50">
                 {/* Left Section */}
                 <div className="flex items-center gap-4 text-[#181818]">
-                    <button className="flex items-center gap-1">
-                        <span className="text-xl">☰</span>
-                        <span className="text-lg">Menu</span>
-                    </button>
-                    <button className="flex items-center gap-1">
-                        ← <span>Change model</span>
+                    <button
+                        className="flex items-center gap-1"
+                        onClick={() => router.push("/sales/shop")}
+                    >
+                        ←   <span>Back to Shop</span>
                     </button>
                 </div>
 

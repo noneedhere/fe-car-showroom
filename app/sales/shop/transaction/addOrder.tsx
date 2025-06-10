@@ -57,7 +57,7 @@ const AddSale = ({ saleLists }: { saleLists: ISaleListItem[] }) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const url = `${BASE_API_URL}/sales`;
+            const url = `${BASE_API_URL}/sale`;
             const userId = Number(getCookie("id")) || 0;
 
             if (!userId) {

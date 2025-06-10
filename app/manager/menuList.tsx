@@ -11,27 +11,27 @@ let menuList: IPropMenu[] = [
     {
         id: `home`,
         label: `Home`,
-        path: `#section1`,
+        path: `/manager/dashboard`,
     },
     {
-        id: `about`,
-        label: `About Us`,
-        path: `#section2`,
+        id: `user`,
+        label: `User`,
+        path: `/manager/user`,
     },
     {
-        id: `model`,
-        label: `Car Model`,
-        path: `#section5`,
+        id: `car`,
+        label: `Car`,
+        path: `/manager/car`,
     },
     {
-        id: `contact`,
-        label: `Contact Us`,
-        path: `#footer`,
+        id: `sale`,
+        label: `Sale`,
+        path: `/manager/sale`,
     },
     {
-        id: `shop`,
-        label: `Shop`,
-        path: `/shop`,
+        id: `login`,
+        label: `Logout`,
+        path: `/login`,
     },
 ]
 export default menuList;
