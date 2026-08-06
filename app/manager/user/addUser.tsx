@@ -122,7 +122,7 @@ const AddUser = () => {
                             required={true} onChange={val => setUser({ ...user, role: val })}>
                             <option value="">--- Select Role ---</option>
                             <option value="MANAGER">MANAGER</option>
-                            <option value="CASHIER">CASHIER</option>
+                            <option value="SALES">SALES</option>
                         </Select>
 // ...existing code...
 

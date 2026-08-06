@@ -21,7 +21,7 @@ type SidebarProps = {
 
 const Sidebar = ({ children, id, title, menuList }: SidebarProps) => {
     return (
-        <div className="text-black bg-white h-screen w-full m-0 p-0">
+        <div className="text-black bg-white w-full m-0 p-0">
             {/* Navbar section */}
             <nav className="w-full flex justify-between items-center px-16 py-4 m-0">
                 <div className="flex items-center">

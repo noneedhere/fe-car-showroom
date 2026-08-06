@@ -22,7 +22,7 @@ export interface Car {
     category: Category;
     year: number;
     price: number;
-    image?: string;
+    carPicture: string;
     description?: string;
     createdAt: string;
     updatedAt: string;

@@ -28,11 +28,12 @@ const Section5 = () => {
                 <CardModelCar bgImage='model1.png' title="911" description="Electric luxury sedan with long range and fast acceleration." />
                 <CardModelCar bgImage='model2.png' title="718" description="Hybrid sports car with futuristic design and performance." />
                 <CardModelCar bgImage='model3.png' title="Taycan" description="Reliable hybrid car known for its fuel efficiency." />
-                <CardModelCar bgImage='model4.png'   title="Panamera" description="All-electric SUV with iconic Mustang performance." />
+                <CardModelCar bgImage='model4.png' title="Panamera" description="All-electric SUV with iconic Mustang performance." />
                 <CardModelCar bgImage='model5.png' title="Macan" description="Premium electric SUV with advanced technology." />
                 <CardModelCar bgImage='model6.png' title="Cayene" description="Innovative electric crossover with ultra-fast charging." />
             </div>
         </div>
     )
-}
+} 
+
 export default Section5;

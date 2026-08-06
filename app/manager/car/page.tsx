@@ -1,11 +1,14 @@
 import { Car } from "@/app/types";
-import { BASE_API_URL } from "@/global";
+import { BASE_API_URL, BASE_IMAGE_CAR } from "@/global";
+import {get} from "@/lib/api-bridge"
+import Image from "next/image";
 import { AlertInfo } from "@/components/alert";
 import AddCar from "./addCar";
 import DeleteCar from "./deleteCar";
 import EditCar from "./editCar";
 import axios from "axios";
 import { cookies } from "next/headers";
+import { data } from "framer-motion/client";
 
 export const getCar = async (): Promise<Car[] | undefined> => {
     const token = (await cookies()).get("token")?.value;
@@ -64,16 +67,20 @@ const CarPage = async ({ searchParams }: { searchParams: Promise<{ [key: string]
                         {carList.map((car, index) => (
                             <div key={`car-${index}`} className="flex flex-wrap shadow m-2">
                                 <div className="w-full md:w-3/12 p-2">
+                                        <small className="text-sm text-black font-bold">Picture</small><br />
+                                        <Image width={50} height={40} src={`${BASE_IMAGE_CAR}/${car.carPicture}`} className="rounded-sm overflow-hidden mt-2" alt="preview" unoptimized />
+                                    </div>
+                                <div className="w-full md:w-2/12 p-2">
                                     <small className="text-sm font-bold text-black text-primary">Name</small> <br />
                                     {car.name}
                                 </div>
-                                <div className="w-full md:w-3/12 p-2">
+                                <div className="w-full md:w-1/12 p-2">
                                     <small className="text-sm font-bold text-black text-primary">Category</small> <br />
                                     {car.category}
                                 </div>
                                 <div className="w-full md:w-2/12 p-2">
                                     <small className="text-sm font-bold text-black text-primary">Price</small> <br />
-                                    Rp{car.price.toLocaleString()}
+                                    {car.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                                 </div>
                                 <div className="w-full md:w-4/12 p-2 flex justify-end items-end flex-col">
                                     <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />

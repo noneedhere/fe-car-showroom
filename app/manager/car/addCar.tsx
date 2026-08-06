@@ -1,7 +1,7 @@
 "use client"
 
 import { Category, Car } from "@/app/types"
-import { BASE_API_URL } from "@/global"
+import { BASE_API_URL, BASE_IMAGE_PROFILE } from "@/global"
 import { post } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
@@ -21,7 +21,7 @@ const AddCar = () => {
         name: ``,
         price: 0,
         year: 0,
-        image: ``,
+        carPicture: ``,
         category: "FAMILY",
         description: ``,
         createdAt: ``,
@@ -39,7 +39,7 @@ const AddCar = () => {
             name: ``,
             price: 0,
             year: 0,
-            image: ``,
+            carPicture: ``,
             category: "FAMILY",
             description: ``,
             createdAt: ``,
@@ -61,7 +61,7 @@ const AddCar = () => {
             payload.append("year", String(year))
             payload.append("category", category || "")
             payload.append("description", description || "")
-            if (file !== null) payload.append("picture", file)
+            if (file !== null) payload.append("carPicture", file)
 
             const { data } = await post(url, payload, TOKEN)
             if (data?.status || data?.message === "Car created successfully") {
@@ -108,7 +108,7 @@ const AddCar = () => {
                     </div>
                     {/* Modal Body */}
                     <div className="p-5 text-black">
-                            <InputGroupComponent id="name" type="text" value={car.name ?? ""}
+                        <InputGroupComponent id="name" type="text" value={car.name ?? ""}
                             onChange={val => setCar({ ...car, name: val })}
                             required={true} label="Car Name" />
 
@@ -126,11 +126,11 @@ const AddCar = () => {
                             <option value="FAMILY">FAMILY</option>
                         </Select>
 
-                        <InputGroupComponent id="description" type="text" value={car.description}
+                        <InputGroupComponent id="description" type="text" value={car.description ?? ""}
                             onChange={val => setCar({ ...car, description: val })}
                             required={false} label="Description" />
 
-                        <FileInput acceptTypes={["image/png", "image/jpeg", "image/jpg"]} id="picture"
+                        <FileInput acceptTypes={["image/png", "image/jpeg", "image/jpg"]} id="carPicture"
                             label="Upload Picture (Max 2MB, PNG/JPG/JPEG)" onChange={f => setFile(f)} required={false} />
                     </div>
                     {/* Modal Footer */}

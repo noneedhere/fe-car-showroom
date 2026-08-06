@@ -77,9 +77,6 @@ export default function Navbar() {
                 </div>
 
                 {/* Center Logo */}
-                <div className="absolute left-1/2 transform -translate-x-1/2">
-                    <img src="/images/logoo.png" alt="Porsche" className="h-[15px]" />
-                </div>
 
                 {/* Right Section */}
                 <div className="flex items-center gap-4 text-[#181818] text-lg">

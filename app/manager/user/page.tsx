@@ -71,6 +71,10 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
                         <div className="m-2">
                             {User.map((data, index) => (
                                 <div key={`keyPrestasi${index}`} className={`flex flex-wrap shadow m-2`}>
+                                    <div className="w-full md:w-3/12 p-2">
+                                        <small className="text-sm text-black font-bold">Picture</small><br />
+                                        <Image width={50} height={40} src={`${BASE_IMAGE_PROFILE}/${data.profilePicture}`} className="rounded-full overflow-hidden mt-2" alt="preview" unoptimized />
+                                    </div>
                                     <div className="w-full md:w-2/12 p-2">
                                         <small className="text-sm font-bold text-black text-primary">Name</small> <br />
                                         {data.name}
@@ -79,11 +83,11 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
                                         <small className="text-sm font-bold text-black text-primary">Email</small> <br />
                                         {data.email}
                                     </div>
-                                    <div className="w-full md:w-5/12 p-2 px-36">
+                                    <div className="w-full md:w-3/12 p-2 px-36">
                                         <small className="text-sm font-bold text-black text-primary">Role</small> <br />
                                         {data.role}
                                     </div>
-                                    <div className="w-full md:w-4/12 p-2 flex justify-end items-end flex-col">
+                                    <div className="w-full md:w-3/12 p-2 flex justify-end items-end flex-col">
                                         <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />
                                         <div className="flex gap-1 flex-row items-center">
                                             <EditUser selectedUser={data} />

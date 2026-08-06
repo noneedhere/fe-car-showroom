@@ -41,7 +41,7 @@ const Shop = () => (
 
                 <div className="flex flex-col justify-between gap-1 mt-4">
 
-                    <h3 className="text-xl font-bold">718 Cayman</h3>
+                    <h3 className="text-xl font-bold">car name</h3>
                     <p className="text-sm text-slate-700 leading-snug pb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
                     <h3 className="text-lg font-bold">300 hp</h3>
@@ -85,7 +85,7 @@ const Shop = () => (
 
                 <div className="flex flex-col justify-between gap-1 mt-4">
 
-                    <h3 className="text-xl font-bold">911 GT3</h3>
+                    <h3 className="text-xl font-bold">car name</h3>
                     <p className="text-sm text-slate-700 leading-snug pb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
                     <h3 className="text-lg font-bold">300 hp</h3>
@@ -129,7 +129,7 @@ const Shop = () => (
 
                 <div className="flex flex-col justify-between gap-1 mt-4">
 
-                    <h3 className="text-xl font-bold">Taycan</h3>
+                    <h3 className="text-xl font-bold">car Name</h3>
                     <p className="text-sm text-slate-700 leading-snug pb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
                     <h3 className="text-lg font-bold">300 hp</h3>
@@ -173,7 +173,7 @@ const Shop = () => (
 
                 <div className="flex flex-col justify-between gap-1 mt-4">
 
-                    <h3 className="text-xl font-bold">718 Spyder RS</h3>
+                    <h3 className="text-xl font-bold">7car name</h3>
                     <p className="text-sm text-slate-700 leading-snug pb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
                     <h3 className="text-lg font-bold">300 hp</h3>

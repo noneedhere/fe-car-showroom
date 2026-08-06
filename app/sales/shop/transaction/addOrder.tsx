@@ -1,84 +1,52 @@
-"use client"
+"use client";
 
-import { BASE_API_URL } from "@/global"
-import { getCookie } from "@/lib/client-cookies"
-import { useRouter } from "next/navigation"
-import { FormEvent, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
-import { InputComponent, InputGroupComponent } from "@/components/inputComponent"
-import Modal from "@/components/modal"
-import Select from "@/components/select"
+import { BASE_API_URL } from "@/global";
+import { getCookie } from "@/lib/client-cookies";
+import { useRouter } from "next/navigation";
+import { FormEvent, useRef, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { InputGroupComponent } from "@/components/inputComponent";
+import Modal from "@/components/modal";
 
-interface ISaleListItem {
+interface ICarOption {
     id: number;
-    qty: number;
+    name: string;
 }
 
-interface ISale {
-    id: number;
-    uuid: string;
-    buyerName: string;
-    saleDate: string;
-    car: string;
-    userId: number;
-    createdAt: string;
-    updatedAt: string;
-    total_price: number;
-    saleLists: ISaleListItem[];
-}
-
-const AddSale = ({ saleLists }: { saleLists: ISaleListItem[] }) => {
+const AddSale = ({ cars }: { cars: ICarOption[] }) => {
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [sale, setSale] = useState<ISale>({
-        id: 0,
-        uuid: "",
-        buyerName: "",
-        saleDate: new Date().toISOString(),
-        car: "",
-        userId: 0,
-        createdAt: "",
-        updatedAt: "",
-        total_price: 0,
-        saleLists: [],
-    });
-
-    const [saleNote, setSaleNote] = useState<string>("");
-
+    const [buyerName, setBuyerName] = useState<string>("");
+    const [selectedCarId, setSelectedCarId] = useState<number>(0);
+    const formRef = useRef<HTMLFormElement>(null);
     const router = useRouter();
     const TOKEN = getCookie("token") || "";
-    const formRef = useRef<HTMLFormElement>(null);
 
     const openModal = () => {
-        setSale({ ...sale, saleLists }); // Inject saleLists
+        setBuyerName("");
+        setSelectedCarId(0);
         setIsShow(true);
         if (formRef.current) formRef.current.reset();
     };
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+        if (!buyerName || !selectedCarId) {
+            toast("buyerName dan id_car harus diisi", {
+                hideProgressBar: true,
+                containerId: "toastSale",
+                type: "warning",
+            });
+            return;
+        }
+
         try {
             const url = `${BASE_API_URL}/sale`;
-            const userId = Number(getCookie("id")) || 0;
-
-            if (!userId) {
-                toast("User not found", { hideProgressBar: true, containerId: "toastSale", type: "error" });
-                return;
-            }
-
-            const lists = sale.saleLists.map((item) => ({
-                carId: item.id,
-                quantity: item.qty,
-                note: saleNote,
-            }));
-
             const payload = {
-                buyerName: sale.buyerName,
-                saleDate: new Date().toISOString(),
-                car: sale.car,
-                user: { id: userId },
-                total_price: sale.total_price,
-                saleLists: lists,
+                buyerName,
+                id_car: selectedCarId,
             };
+            console.log("Payload being sent:", payload);
+
 
             const response = await fetch(url, {
                 method: "POST",
@@ -93,14 +61,26 @@ const AddSale = ({ saleLists }: { saleLists: ISaleListItem[] }) => {
 
             if (data?.status) {
                 setIsShow(false);
-                toast(data?.message, { hideProgressBar: true, containerId: "toastSale", type: "success" });
+                toast(data?.message, {
+                    hideProgressBar: true,
+                    containerId: "toastSale",
+                    type: "success",
+                });
                 setTimeout(() => router.refresh(), 1000);
             } else {
-                toast(data?.message, { hideProgressBar: true, containerId: "toastSale", type: "warning" });
+                toast(data?.message, {
+                    hideProgressBar: true,
+                    containerId: "toastSale",
+                    type: "warning",
+                });
             }
         } catch (error) {
-            console.log(error);
-            toast("Something went wrong", { hideProgressBar: true, containerId: "toastSale", type: "error" });
+            console.error(error);
+            toast("Something went wrong", {
+                hideProgressBar: true,
+                containerId: "toastSale",
+                type: "error",
+            });
         }
     };
 
@@ -113,14 +93,41 @@ const AddSale = ({ saleLists }: { saleLists: ISaleListItem[] }) => {
             <Modal isShow={isShow} onClose={setIsShow}>
                 <form onSubmit={handleSubmit} ref={formRef} className="text-left">
                     <div className="p-5">
-                        <InputGroupComponent id="buyerName" type="text" value={sale.buyerName} onChange={(val) => setSale({ ...sale, buyerName: val })} required label="Buyer Name" className="text-black" />
-                        <InputGroupComponent id="car" type="text" value={sale.car} onChange={(val) => setSale({ ...sale, car: (val) })} required label="Car ID" className="text-black" />
-                        <InputGroupComponent id="total_price" type="number" value={sale.total_price.toString()} onChange={(val) => setSale({ ...sale, total_price: Number(val) })} required label="Total Price" className="text-black"/>
-                        <InputGroupComponent id="saleNote" type="text" value={saleNote} onChange={(val) => setSaleNote(val)} label="Sale Note" className="text-black" />
+                        <InputGroupComponent
+                            id="buyerName"
+                            type="text"
+                            value={buyerName}
+                            onChange={setBuyerName}
+                            required
+                            label="Buyer Name"
+                            className="text-black"
+                        />
+                        <div className="mt-4">
+                            <label htmlFor="car" className="block text-sm font-medium text-gray-700">
+                                Select Car
+                            </label>
+                            <select
+                                id="car"
+                                name="car"
+                                value={selectedCarId}
+                                onChange={(e) => setSelectedCarId(Number(e.target.value))}
+                                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+                                required
+                            >
+                                <option value="">-- Choose Car --</option>
+                                {cars.map((car) => (
+                                    <option key={car.id} value={car.id}>
+                                        {car.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                     <div className="w-full p-5 flex rounded-b-2xl shadow">
                         <div className="flex ml-auto gap-2">
-                            <button type="button" onClick={() => setIsShow(false)}>Cancel</button>
+                            <button type="button" onClick={() => setIsShow(false)}>
+                                Cancel
+                            </button>
                             <button type="submit">Save</button>
                         </div>
                     </div>
