@@ -3,7 +3,7 @@ import FeatureItem from '../../card/cardSection4/page';
 
 const Section4 = () => {
     return (
-        <div className="w-full h-[1580px] bg-slate-100">
+        <div className="w-full h-[1580px] bg-white">
             <div className='flex flex-row items-start mx-auto relative'>
                 {/* Foto di kiri */}
                 <div className="flex flex-col justify-start items-start mt-[145px] ml-[120px] w-[526px] flex-shrink-0">

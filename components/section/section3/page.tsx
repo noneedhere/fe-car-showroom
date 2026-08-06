@@ -34,8 +34,7 @@ const Section3 = () => {
                                 className="flex flex-col items-start justify-start text-white w-[329px] h-[200px] mx-[77-px]">
                                 <h2 className="text-2xl font-bold mb-2">We are very competent in this field</h2>
                                 <p className="text-base mb-4">Your description or content here.</p>
-                                <button className="relative w-[200px] py-[15px] text-center font-bold border-2 border-[#2fb7dd] text-[#2fb7dd] hover:text-white rounded-md overflow-hidden group">
-                                    <span className="absolute inset-0 w-0 h-full bg-[#2fb7dd] transition-all duration-500 group-hover:w-full border-none"></span>
+                                <button className="relative w-[200px] py-[15px] text-center bg-[#2fb7dd] text-white font-semibold rounded-lg hover:bg-[#2199bb] transition-colors">
                                     <span className="relative z-10">LEARN MORE</span>
                                 </button>
                             </div>
