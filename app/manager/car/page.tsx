@@ -46,54 +46,85 @@ const CarPage = async ({ searchParams }: { searchParams: Promise<{ [key: string]
     console.log("Fetched Car:", carList);
 
     return (
-        <div className="m-2 bg-white rounded-lg border-t-4 border-t-slate-200 p-3 shadow-md text-slate-700">
-            <h4 className="text-2xl text-oren mb-2">Car Data</h4>
-            <p className="text-sm text-secondary mb-4">
-                This page displays Car data, allowing users to view details,
-                search, and manage car entries by adding, editing, or deleting them.
-            </p>
-            <div className="flex justify-end items-end mb-4">
-                <div className="ml-4">
-                    <AddCar />
+        <div className="space-y-6">
+            {/* Page Header */}
+            <div className="admin-card p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 className="text-xl font-bold text-text-primary">Car Inventory</h1>
+                        <p className="text-sm text-text-secondary mt-1">
+                            Manage your car showroom inventory. Add, edit, or remove car entries.
+                        </p>
+                    </div>
+                    <div className="flex-shrink-0">
+                        <AddCar />
+                    </div>
                 </div>
             </div>
-            {
-                carList.length === 0 ? (
-                    <AlertInfo title="Information">
-                        No cars available.
-                    </AlertInfo>
-                ) : (
-                    <div className="m-2">
-                        {carList.map((car, index) => (
-                            <div key={`car-${index}`} className="flex flex-wrap shadow m-2">
-                                <div className="w-full md:w-3/12 p-2">
-                                        <small className="text-sm text-black font-bold">Picture</small><br />
-                                        <Image width={50} height={40} src={`${BASE_IMAGE_CAR}/${car.carPicture}`} className="rounded-sm overflow-hidden mt-2" alt="preview" unoptimized />
-                                    </div>
-                                <div className="w-full md:w-2/12 p-2">
-                                    <small className="text-sm font-bold text-black text-primary">Name</small> <br />
-                                    {car.name}
-                                </div>
-                                <div className="w-full md:w-1/12 p-2">
-                                    <small className="text-sm font-bold text-black text-primary">Category</small> <br />
-                                    {car.category}
-                                </div>
-                                <div className="w-full md:w-2/12 p-2">
-                                    <small className="text-sm font-bold text-black text-primary">Price</small> <br />
-                                    {car.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                                </div>
-                                <div className="w-full md:w-4/12 p-2 flex justify-end items-end flex-col">
-                                    <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />
-                                    <div className="flex gap-1 flex-row items-center">
-                                        <EditCar selectedCar={car} />
-                                        <DeleteCar selectedCar={car} />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )
-            }
+
+            {/* Data Table */}
+            <div className="admin-card overflow-hidden">
+                {
+                    carList.length === 0 ? (
+                        <div className="p-6">
+                            <AlertInfo title="Information">
+                                No cars available. Click &quot;Add Car&quot; to add your first car.
+                            </AlertInfo>
+                        </div>
+                    ) : (
+                        <div className="overflow-x-auto">
+                            <table className="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Picture</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th className="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {carList.map((car, index) => (
+                                        <tr key={`car-${index}`}>
+                                            <td>
+                                                <div className="w-16 h-12 rounded-lg overflow-hidden bg-gray-100">
+                                                    <Image
+                                                        width={64}
+                                                        height={48}
+                                                        src={`${BASE_IMAGE_CAR}/${car.carPicture}`}
+                                                        className="w-full h-full object-cover"
+                                                        alt={car.name || "Car"}
+                                                        unoptimized
+                                                    />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span className="font-medium">{car.name}</span>
+                                            </td>
+                                            <td>
+                                                <span className={`badge ${car.category === 'SPORT' ? 'badge-sport' : 'badge-family'}`}>
+                                                    {car.category}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span className="font-semibold text-text-primary">
+                                                    {car.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div className="flex gap-2 justify-end">
+                                                    <EditCar selectedCar={car} />
+                                                    <DeleteCar selectedCar={car} />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 };
