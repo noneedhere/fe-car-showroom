@@ -1,4 +1,4 @@
-import AdminTemplate from "@/components/salesTemplates";
+import AdminTemplate from "@/components/managerTemplates";
 import menuList from "../menuList";
 
 export const metadata = {
@@ -12,7 +12,7 @@ type PropsLayout = {
 
 const RootLayout = ({ children }: PropsLayout) => {
     return (
-        <AdminTemplate title="Car Showroom" id="dashboard" menuList={menuList}>
+        <AdminTemplate title="Car Showroom" id="home" menuList={menuList}>
             {children}
         </AdminTemplate>
     )

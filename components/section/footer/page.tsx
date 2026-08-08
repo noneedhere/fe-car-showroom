@@ -21,7 +21,7 @@ const Footer = () => {
 
                         <div className='flex flex-row items-center'>
                             <img src="/images/mail.png" alt="" className='w-8 h-auto mr-4' />
-                            <p className='text-[16px]'>akmalngaceng@gmail.com</p>
+                            <p className='text-[16px]'>zidane@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='flex flow-row justify-between w-full text-gray-600'>
-                <p className='items-start justify-center'>© 2025 Zidane Wibu All Right Reserved.</p>
+                <p className='items-start justify-center'>© 2025 All Right Reserved.</p>
                 <div className='flex flex-row gap-28'>
                     <p className='items-start'>Privacy Policy</p>
                     <p className='items-start'>Term & Conditions</p>
