@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify"
 const LoginPage = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const [showPassword, setShowPassword] = useState<boolean>(false)
     const router = useRouter()
 
     const handleSubmit = async (e: FormEvent) => {
@@ -70,26 +71,61 @@ const LoginPage = () => {
                     <form onSubmit={handleSubmit} >
                         <div className='w-full flex flex-col mb-10'>
                             <p className='text-black'>Email</p>
-                            <input
-                                type="email"
-                                placeholder='yourmail@gmail.com'
-                                className='w-full p-3 text-black py-4 my-4 bg-gray-200 rounded-xl outline-none'
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                id="email"
-                                required
-                            />
+                            <div className='relative my-4'>
+                                <input
+                                    type="email"
+                                    placeholder='yourmail@gmail.com'
+                                    className='w-full p-3 text-black py-4 pr-12 bg-gray-200 rounded-xl outline-none'
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    id="email"
+                                    required
+                                />
+                                {/* Person icon */}
+                                <span className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                </span>
+                            </div>
 
                             <p className='text-black'>Password</p>
-                            <input
-                                type="password"
-                                placeholder='********'
-                                className='w-full p-3 text-black py-4 my-4 bg-gray-200 rounded-xl outline-none'
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                                id="password-industri-app"
-                                required
-                            />
+                            <div className='relative my-4'>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder='********'
+                                    className='w-full p-3 text-black py-4 pr-12 bg-gray-200 rounded-xl outline-none'
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
+                                    id="password-industri-app"
+                                    required
+                                />
+                                {/* Eye toggle icon */}
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer'
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                    id="toggle-password-visibility"
+                                >
+                                    {showPassword ? (
+                                        /* Open eye icon */
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg>
+                                    ) : (
+                                        /* Closed eye icon */
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                            <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                                            <line x1="1" y1="1" x2="23" y2="23" />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
                         </div>
 
                         <div className='w-full flex items-center'>
