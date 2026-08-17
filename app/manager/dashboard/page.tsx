@@ -122,6 +122,15 @@ const HomePage = () => {
                     </div>
                     <div className="flex gap-2">
                         <Link
+                            href="/sales/dashboard"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-text-primary rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition-colors"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                            </svg>
+                            Cashier Page
+                        </Link>
+                        <Link
                             href="/manager/car"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                         >

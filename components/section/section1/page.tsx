@@ -7,20 +7,20 @@ const Section1 = () => {
     };
 
     return (
-        <div id="section1" className="w-full h-[650px] flex items-center justify-start p-20">
+        <div id="section1" className="relative w-full h-[650px] flex items-center justify-start p-20">
             <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="auto"
-                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+                className="absolute top-0 left-0 w-full h-full object-cover"
                 src="/video/background-vid.mp4"
             />
             <div className="w-1/2 text-white min-w-[750px] px-20">
                 <h1 className="text-6xl font-bold leading-tight self-center flex flex-wrap gap-2">
                     <BlurText
-                        text="Discover the ease of"
+                        text="Discover the ease of" 
                         delay={100}
                         animateBy="words"
                         direction="top"
