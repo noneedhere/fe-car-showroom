@@ -49,60 +49,85 @@ const UserPage = async ({ searchParams }: { searchParams: Promise<{ [key: string
 
 
     return (
-        <div className="m-2 bg-white rounded-lg border-t-4 border-t-slate-200 p-3 shadow-md text-slate-700">
-            <h4 className="text-2xl text-oren mb-2">User Data</h4>
-            <p className="text-sm text-secondary mb-4">
-                This page displays User data, allowing Users to view details,
-                search, and manage User items by adding, editing, or deleting them.
-            </p>
-            <div className="flex justify-end items-end mb-4">
-                {/* Add Menu Button */}
-                <div className="ml-4">
-                    <AddUser />
+        <div className="space-y-6">
+            {/* Page Header */}
+            <div className="admin-card p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 className="text-xl font-bold text-text-primary">User Management</h1>
+                        <p className="text-sm text-text-secondary mt-1">
+                            Manage user accounts. View details, add new users, or update existing ones.
+                        </p>
+                    </div>
+                    <div className="flex-shrink-0">
+                        <AddUser />
+                    </div>
                 </div>
             </div>
-            {
-                User.length == 0 ?
-                    <AlertInfo title="informasi">
-                        No data Available
-                    </AlertInfo>
-                    :
-                    <>
-                        <div className="m-2">
-                            {User.map((data, index) => (
-                                <div key={`keyPrestasi${index}`} className={`flex flex-wrap shadow m-2`}>
-                                    <div className="w-full md:w-3/12 p-2">
-                                        <small className="text-sm text-black font-bold">Picture</small><br />
-                                        <Image width={50} height={40} src={`${BASE_IMAGE_PROFILE}/${data.profilePicture}`} className="rounded-full overflow-hidden mt-2" alt="preview" unoptimized />
-                                    </div>
-                                    <div className="w-full md:w-2/12 p-2">
-                                        <small className="text-sm font-bold text-black text-primary">Name</small> <br />
-                                        {data.name}
-                                    </div>
-                                    <div className="w-full md:w-1/12 p-2">
-                                        <small className="text-sm font-bold text-black text-primary">Email</small> <br />
-                                        {data.email}
-                                    </div>
-                                    <div className="w-full md:w-3/12 p-2 px-36">
-                                        <small className="text-sm font-bold text-black text-primary">Role</small> <br />
-                                        {data.role}
-                                    </div>
-                                    <div className="w-full md:w-3/12 p-2 flex justify-end items-end flex-col">
-                                        <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />
-                                        <div className="flex gap-1 flex-row items-center">
-                                            <EditUser selectedUser={data} />
-                                            <DeleteUser selectedUser={data} />
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+
+            {/* Data Table */}
+            <div className="admin-card overflow-hidden">
+                {
+                    User.length == 0 ?
+                        <div className="p-6">
+                            <AlertInfo title="Information">
+                                No data available. Click &quot;Add User&quot; to create the first user.
+                            </AlertInfo>
                         </div>
-                    </>
-            }
-
+                        :
+                        <div className="overflow-x-auto">
+                            <table className="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Picture</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th className="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {User.map((data, index) => (
+                                        <tr key={`keyUser${index}`}>
+                                            <td>
+                                                <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
+                                                    <Image
+                                                        width={40}
+                                                        height={40}
+                                                        src={`${BASE_IMAGE_PROFILE}/${data.profilePicture}`}
+                                                        className="w-full h-full object-cover"
+                                                        alt={data.name || "User"}
+                                                        unoptimized
+                                                    />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span className="font-medium">{data.name}</span>
+                                            </td>
+                                            <td>
+                                                <span className="text-text-secondary">{data.email}</span>
+                                            </td>
+                                            <td>
+                                                <span className={`badge ${data.role === 'MANAGER' ? 'badge-manager' : 'badge-sales'}`}>
+                                                    {data.role}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div className="flex gap-2 justify-end">
+                                                    <EditUser selectedUser={data} />
+                                                    <DeleteUser selectedUser={data} />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                }
+            </div>
         </div>
-
     )
 }
 export default UserPage
+
 

@@ -41,45 +41,66 @@ const SalePage = async ({ searchParams }: { searchParams: Promise<{ [key: string
     console.log("Fetched Sales:", sales);
 
     return (
-        <div className="m-2 bg-white rounded-lg border-t-4 border-t-slate-200 p-3 shadow-md text-slate-700">
-            <h4 className="text-2xl text-oren mb-2">Sales Data</h4>
-            <p className="text-sm text-secondary mb-4">
-                This page displays Sales data, allowing you to view details
-                and delete sale entries.
-            </p>
-
-            {
-                sales.length === 0 ? (
-                    <AlertInfo title="Information">
-                        No sales data available
-                    </AlertInfo>
-                ) : (
-                    <div className="m-2">
-                        {sales.map((data, index) => (
-                            <div key={`saleKey${index}`} className="flex flex-wrap shadow m-2">
-                                <div className="w-full md:w-2/12 p-2">
-                                    <small className="text-sm font-bold text-black text-primary">ID</small><br />
-                                    {data.id_sale}
-                                </div>
-                                <div className="w-full md:w-1/12 p-2">
-                                    <small className="text-sm font-bold text-black text-primary">Nama</small><br />
-                                    {data.buyerName}
-                                </div>
-                                <div className="w-full md:w-5/12 p-2 px-36">
-                                    <small className="text-sm font-bold text-black text-primary">Date</small><br />
-                                    {data.saleDate}
-                                </div>
-                                <div className="w-full md:w-4/12 p-2 flex justify-end items-end flex-col">
-                                    <small className="text-sm font-bold text-black text-primary flex items-start justify-start">Action</small><br />
-                                    <div className="flex gap-1 flex-row items-center">
-                                        <DeleteSale selectedSale={data} />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+        <div className="space-y-6">
+            {/* Page Header */}
+            <div className="admin-card p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 className="text-xl font-bold text-text-primary">Sales Records</h1>
+                        <p className="text-sm text-text-secondary mt-1">
+                            View and manage all sales transactions. Track buyer details and sale dates.
+                        </p>
                     </div>
-                )
-            }
+                </div>
+            </div>
+
+            {/* Data Table */}
+            <div className="admin-card overflow-hidden">
+                {
+                    sales.length === 0 ? (
+                        <div className="p-6">
+                            <AlertInfo title="Information">
+                                No sales data available yet. Sales will appear here once transactions are recorded.
+                            </AlertInfo>
+                        </div>
+                    ) : (
+                        <div className="overflow-x-auto">
+                            <table className="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sale ID</th>
+                                        <th>Buyer Name</th>
+                                        <th>Sale Date</th>
+                                        <th className="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {sales.map((data, index) => (
+                                        <tr key={`saleKey${index}`}>
+                                            <td>
+                                                <span className="font-mono text-text-secondary text-xs bg-gray-100 px-2 py-1 rounded">
+                                                    #{data.id_sale}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span className="font-medium">{data.buyerName}</span>
+                                            </td>
+                                            <td>
+                                                <span className="text-text-secondary">{data.saleDate}</span>
+                                            </td>
+                                            <td>
+                                                <div className="flex gap-2 justify-end">
+                                                    <DeleteSale selectedSale={data} />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 };

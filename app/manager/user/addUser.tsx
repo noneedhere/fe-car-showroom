@@ -13,7 +13,7 @@ import Modal from "@/components/modal"
 import Select from "@/components/select"
 import FileInput from "@/components/FileInput"
 
-const role = (cat: Role): React.ReactNode => {
+const renderRole = (cat: Role): React.ReactNode => {
     if (cat === "MANAGER") {
         return (
             <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-200/95 dark:text-blue-950/90">
@@ -31,8 +31,8 @@ const role = (cat: Role): React.ReactNode => {
 const AddUser = () => {
     const [isShow, setIsShow] = useState<boolean>(false)
     const [user, setUser] = useState<User>({
-        id_User: 0, uuid: ``, name: ``, email: ``,
-        password: ``, profilePicture: ``, role: role, createdAt: ``, updatedAt: ``
+        id_user: 0, uuid: ``, name: ``, email: ``,
+        password: ``, profilePicture: ``, role: `` as Role, createdAt: ``, updatedAt: ``
     })
     const router = useRouter()
     const TOKEN = getCookie("token") || ""
@@ -40,8 +40,8 @@ const AddUser = () => {
     const formRef = useRef<HTMLFormElement>(null)
     const openModal = () => {
         setUser({
-            id_User: 0, uuid: ``, name: ``, email: ``,
-            password: ``, profilePicture: ``, role: role, createdAt: ``, updatedAt: ``
+            id_user: 0, uuid: ``, name: ``, email: ``,
+            password: ``, profilePicture: ``, role: `` as Role, createdAt: ``, updatedAt: ``
         })
         setIsShow(true)
         if (formRef.current) formRef.current.reset()
@@ -117,14 +117,12 @@ const AddUser = () => {
                             onChange={val => setUser({ ...user, password: val })}
                             required={true} label="Password" />
 
-                        // ...existing code...
                         <Select id={`role`} value={user.role} label="role"
-                            required={true} onChange={val => setUser({ ...user, role: val })}>
+                            required={true} onChange={val => setUser({ ...user, role: val as Role })}>
                             <option value="">--- Select Role ---</option>
                             <option value="MANAGER">MANAGER</option>
                             <option value="SALES">SALES</option>
                         </Select>
-// ...existing code...
 
                         <FileInput acceptTypes={["application/pdf", "image/png", "image/jpeg", "image/jpg"]} id="profilePicture"
                             label="Upload Picture (Max 2MB, PDF/JPG/JPEG/PNG)" onChange={f => setFile(f)} required={false} />
