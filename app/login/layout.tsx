@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Login | Fooder',
+    title: 'Login | Car Showroom',
     description: 'Praktikum SMK Telkom Malang',
 }
 
