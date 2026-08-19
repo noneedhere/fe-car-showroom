@@ -367,3 +367,33 @@ html {
   background: #d1fae5;
   color: #059669;
 }
+
+/* ============================================
+   Alert Countdown Animation
+   (fills from 0% → 100% then alert disappears)
+   ============================================ */
+
+@keyframes alertCountdown {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   React-Toastify Progress Bar Overrides
+   Reverse the default "deplete" direction so
+   the bar fills UP to 100%, then the toast
+   disappears.
+   ============================================ */
+
+.Toastify__progress-bar--animated {
+  animation-direction: reverse !important;
+}
+
+.Toastify__progress-bar-theme--light {
+  background: var(--accent, #0ea5e9) !important;
+}
+
