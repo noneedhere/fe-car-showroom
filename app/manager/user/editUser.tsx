@@ -1,6 +1,6 @@
 "use client"
 
-import { User } from "@/app/types"
+import { Role, User } from "@/app/types"
 import { BASE_API_URL } from "@/global"
 import { put } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
@@ -94,7 +94,7 @@ const EditUser = ({ selectedUser }: { selectedUser: User }) => {
                             required={true} label="Password" />
 
                         <Select id={`role`} value={user.role} label="role"
-                            required={true} onChange={val => setUser({ ...user, role: val })}>
+                            required={true} onChange={val => setUser({ ...user, role: val as Role })}>
                             <option value="">--- Select Role ---</option>
                             <option value="MANAGER">MANAGER</option>
                             <option value="SALES">SALES</option>
