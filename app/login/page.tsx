@@ -35,7 +35,7 @@ const LoginPage = () => {
         console.log("Role:", data.data?.role)
 
         if (data.status === true) {
-            toast(data.message, { hideProgressBar: true, containerId: `toastLogin`, type: "success", autoClose: 1000 })
+            toast(data.message, { containerId: `toastLogin`, type: "success", autoClose: 1500 })
 
             storeCookie("token", data.token)
             storeCookie("id", String(data.data.id))
@@ -49,18 +49,18 @@ const LoginPage = () => {
                 else toast("Role tidak dikenal", { containerId: `toastLogin`, type: "error" })
             }, 1000)
         } else {
-            toast("Email atau password salah", { hideProgressBar: true, containerId: `toastLogin`, type: "error", autoClose: 2000 })
+            toast("Email atau password salah", { containerId: `toastLogin`, type: "error", autoClose: 4000 })
         }
     } catch (error) {
         console.error("Login Error:", error)
-        toast("Email atau password salah", { hideProgressBar: true, containerId: `toastLogin`, type: "error", autoClose: 2000 })
+        toast("Email atau password salah", { containerId: `toastLogin`, type: "error", autoClose: 4000 })
     }
 }
 
 
     return (
         <div className='w-full h-screen flex items-start'>
-            <ToastContainer containerId={`toastLogin`} />
+            <ToastContainer containerId={`toastLogin`} autoClose={5000} />
             <div className='w-1/2 h-full bg-[#f5f5f5] flex items-center justify-center p-20'>
                 <div className='w-full flex flex-col min-w-[450px]'>
                     <div className='w-full flex flex-col mb-10'>

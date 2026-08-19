@@ -28,31 +28,31 @@ const DeleteSale = ({ selectedSale }: { selectedSale: Sale }) => {
             if (data?.status) {
                 setIsShow(false)
                 toast(data?.message, {
-                    hideProgressBar: true,
                     containerId: "toastSale",
                     type: "success",
+                    autoClose: 3000,
                 })
                 setTimeout(() => router.refresh(), 1000)
             } else {
                 toast(data?.message, {
-                    hideProgressBar: true,
                     containerId: "toastSale",
                     type: "warning",
+                    autoClose: 5000,
                 })
             }
         } catch (error) {
             console.error(error)
             toast("Something went wrong", {
-                hideProgressBar: true,
                 containerId: "toastSale",
                 type: "error",
+                autoClose: 5000,
             })
         }
     }
 
     return (
         <div>
-            <ToastContainer containerId="toastSale" />
+            <ToastContainer containerId="toastSale" autoClose={5000} />
             <ButtonDanger type="button" onClick={openModal}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"

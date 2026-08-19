@@ -44,21 +44,21 @@ const EditCar = ({ selectedCar }: { selectedCar: Car }) => {
             const { data } = await put(url, payload, TOKEN)
 
             if (data?.status || data?.message === "Car updated successfully") {
-                toast(data?.message || "Car updated", { containerId: "toastCar", type: "success", hideProgressBar: true })
+                toast(data?.message || "Car updated", { containerId: "toastCar", type: "success", autoClose: 3000 })
                 setIsShow(false)
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message || "Failed to update car", { containerId: "toastCar", type: "warning", hideProgressBar: true })
+                toast(data?.message || "Failed to update car", { containerId: "toastCar", type: "warning", autoClose: 5000 })
             }
         } catch (err) {
             console.error(err)
-            toast("Something went wrong", { containerId: "toastCar", type: "error", hideProgressBar: true })
+            toast("Something went wrong", { containerId: "toastCar", type: "error", autoClose: 5000 })
         }
     }
 
     return (
         <div>
-            <ToastContainer containerId="toastCar" />
+            <ToastContainer containerId="toastCar" autoClose={5000} />
             <ButtonWarning type="button" onClick={openModal}>
                 <div className="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">

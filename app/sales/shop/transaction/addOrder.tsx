@@ -32,9 +32,9 @@ const AddSale = ({ cars }: { cars: ICarOption[] }) => {
         e.preventDefault();
         if (!buyerName || !selectedCarId) {
             toast("buyerName dan id_car harus diisi", {
-                hideProgressBar: true,
                 containerId: "toastSale",
                 type: "warning",
+                autoClose: 4000,
             });
             return;
         }
@@ -62,31 +62,31 @@ const AddSale = ({ cars }: { cars: ICarOption[] }) => {
             if (data?.status) {
                 setIsShow(false);
                 toast(data?.message, {
-                    hideProgressBar: true,
                     containerId: "toastSale",
                     type: "success",
+                    autoClose: 3000,
                 });
                 setTimeout(() => router.refresh(), 1000);
             } else {
                 toast(data?.message, {
-                    hideProgressBar: true,
                     containerId: "toastSale",
                     type: "warning",
+                    autoClose: 5000,
                 });
             }
         } catch (error) {
             console.error(error);
             toast("Something went wrong", {
-                hideProgressBar: true,
                 containerId: "toastSale",
                 type: "error",
+                autoClose: 5000,
             });
         }
     };
 
     return (
         <div>
-            <ToastContainer containerId="toastSale" />
+            <ToastContainer containerId="toastSale" autoClose={5000} />
             <button type="button" onClick={openModal}>
                 Add Sale
             </button>

@@ -66,20 +66,20 @@ const AddCar = () => {
             const { data } = await post(url, payload, TOKEN)
             if (data?.status || data?.message === "Car created successfully") {
                 setIsShow(false)
-                toast(data?.message || "Car added", { hideProgressBar: true, containerId: `toastCar`, type: `success` })
+                toast(data?.message || "Car added", { containerId: `toastCar`, type: `success`, autoClose: 3000 })
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message || "Failed to add car", { hideProgressBar: true, containerId: `toastCar`, type: `warning` })
+                toast(data?.message || "Failed to add car", { containerId: `toastCar`, type: `warning`, autoClose: 5000 })
             }
         } catch (error) {
             console.log(error);
-            toast(`Something Wrong`, { hideProgressBar: true, containerId: `toastCar`, type: `error` })
+            toast(`Something Wrong`, { containerId: `toastCar`, type: `error`, autoClose: 5000 })
         }
     }
 
     return (
         <div>
-            <ToastContainer containerId={`toastCar`} />
+            <ToastContainer containerId={`toastCar`} autoClose={5000} />
             <ButtonSuccess type="button" onClick={() => openModal()}>
                 <div className="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
