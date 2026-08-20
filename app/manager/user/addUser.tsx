@@ -6,7 +6,7 @@ import { post } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { ButtonWarning, ButtonSuccess, ButtonDanger } from "@/components/button"
 import { InputGroupComponent } from "@/components/inputComponent"
 import Modal from "@/components/modal"
@@ -62,14 +62,14 @@ const AddUser = () => {
             const { data } = await post(url, payload, TOKEN)
             if (data?.status) {
                 setIsShow(false)
-                toast(data?.message, { hideProgressBar: true, type: `success` })
+                toast(data?.message, { type: `success`, autoClose: 5000 })
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message, { hideProgressBar: true, type: `warning` })
+                toast(data?.message, { type: `warning`, autoClose: 5000 })
             }
         } catch (error) {
             console.log(error);
-            toast(`Something Wrong`, { hideProgressBar: true, type: `error` })
+            toast(`Something Wrong`, { type: `error`, autoClose: 5000 })
         }
     }
 

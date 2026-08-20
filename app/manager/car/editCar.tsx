@@ -6,7 +6,7 @@ import { put } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { ButtonWarning, ButtonDanger, ButtonSuccess } from "@/components/button"
 import { InputGroupComponent } from "@/components/inputComponent"
 import Modal from "@/components/modal"
@@ -44,21 +44,20 @@ const EditCar = ({ selectedCar }: { selectedCar: Car }) => {
             const { data } = await put(url, payload, TOKEN)
 
             if (data?.status || data?.message === "Car updated successfully") {
-                toast(data?.message || "Car updated", { containerId: "toastCar", type: "success", autoClose: 3000 })
+                toast(data?.message || "Car updated", { type: `success`, autoClose: 5000 })
                 setIsShow(false)
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message || "Failed to update car", { containerId: "toastCar", type: "warning", autoClose: 5000 })
+                toast(data?.message || "Failed to update car", { type: `warning`, autoClose: 5000 })
             }
         } catch (err) {
             console.error(err)
-            toast("Something went wrong", { containerId: "toastCar", type: "error", autoClose: 5000 })
+            toast("Something went wrong", { type: `error`, autoClose: 5000 })
         }
     }
 
     return (
         <div>
-            <ToastContainer containerId="toastCar" autoClose={5000} />
             <ButtonWarning type="button" onClick={openModal}>
                 <div className="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
