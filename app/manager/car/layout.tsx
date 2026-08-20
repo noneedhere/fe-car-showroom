@@ -1,5 +1,6 @@
 import AdminTemplate from "@/components/managerTemplates"
 import MenuList from "../menuList"
+import ToastProvider from "@/components/toast/indec"
 
 export const metadata = {
    title: 'Car Management | Car Showroom',
@@ -12,9 +13,10 @@ type PropsLayout = {
 
 const RootLayout = ({ children }: PropsLayout) => {
    return (
-       <AdminTemplate title="Car Showroom" id="car" menuList={MenuList}>
-           {children}
-       </AdminTemplate>
+      <AdminTemplate title="Car Showroom" id="car" menuList={MenuList}>
+         <ToastProvider />
+         {children}
+      </AdminTemplate>
    )
 }
 

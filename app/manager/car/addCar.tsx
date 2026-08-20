@@ -6,7 +6,7 @@ import { post } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { ButtonWarning, ButtonSuccess, ButtonDanger } from "@/components/button"
 import { InputGroupComponent } from "@/components/inputComponent"
 import Modal from "@/components/modal"
@@ -64,22 +64,27 @@ const AddCar = () => {
             if (file !== null) payload.append("carPicture", file)
 
             const { data } = await post(url, payload, TOKEN)
-            if (data?.status || data?.message === "Car created successfully") {
+            if (data?.status === true) {
+                toast.success(data?.message || "Car added successfully")
+
                 setIsShow(false)
-                toast(data?.message || "Car added", { containerId: `toastCar`, type: `success`, autoClose: 3000 })
-                setTimeout(() => router.refresh(), 1000)
+
+                setTimeout(() => {
+                    router.refresh()
+                }, 1000)
             } else {
-                toast(data?.message || "Failed to add car", { containerId: `toastCar`, type: `warning`, autoClose: 5000 })
+                toast.warning(data?.message || "Failed to add car")
             }
+
         } catch (error) {
-            console.log(error);
-            toast(`Something Wrong`, { containerId: `toastCar`, type: `error`, autoClose: 5000 })
+            console.error(error)
+
+            toast.error("Something went wrong")
         }
     }
 
     return (
         <div>
-            <ToastContainer containerId={`toastCar`} autoClose={5000} />
             <ButtonSuccess type="button" onClick={() => openModal()}>
                 <div className="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
