@@ -6,7 +6,7 @@ import { drop } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { ButtonWarning, ButtonDanger, ButtonSuccess } from "@/components/button"
 import Modal from "@/components/modal"
 
@@ -26,14 +26,14 @@ const DeleteUser = ({ selectedUser }: { selectedUser: User }) => {
             const { data } = await drop(url, TOKEN)
             if (data?.status) {
                 setIsShow(false)
-                toast(data?.message, { hideProgressBar: true, containerId: `toastMenu`, type: `success` })
+                toast(data?.message, { type: `success`, autoClose: 5000 })
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message, { hideProgressBar: true, containerId: `toastMenu`, type: `warning` })
+                toast(data?.message, { type: `warning`, autoClose: 5000 })
             }
         } catch (error) {
             console.log(error);
-            toast(`Something Wrong`, { hideProgressBar: true, containerId: `toastMenu`, type: `error` })
+            toast(`Something Wrong`, { type: `error`, autoClose: 5000 })
         }
     }
     return (

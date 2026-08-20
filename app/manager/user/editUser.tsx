@@ -6,7 +6,7 @@ import { put } from "@/lib/api-bridge"
 import { getCookie } from "@/lib/client-cookies"
 import { useRouter } from "next/navigation"
 import { FormEvent, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { ButtonWarning, ButtonDanger, ButtonSuccess } from "../../../components/button"
 import { InputGroupComponent } from "@/components/inputComponent"
 import Modal from "@/components/modal"
@@ -40,14 +40,14 @@ const EditUser = ({ selectedUser }: { selectedUser: User }) => {
             const { data } = await put(url, payload, TOKEN)
             if (data?.status) {
                 setIsShow(false)
-                toast(data?.message, { hideProgressBar: true, type: `success`, autoClose: 2000 })
+                toast(data?.message, { type: `success`, autoClose: 5000 })
                 setTimeout(() => router.refresh(), 1000)
             } else {
-                toast(data?.message, { hideProgressBar: true, type: `warning`, autoClose: 2000 })
+                toast(data?.message, { type: `warning`, autoClose: 5000 })
             }
         } catch (error) {
             console.log(error);
-            toast(`Something Wrong`, { hideProgressBar: true, type: `error`, autoClose: 2000 })
+            toast(`Something Wrong`, { type: `error`, autoClose: 5000 })
         }
     }
 
