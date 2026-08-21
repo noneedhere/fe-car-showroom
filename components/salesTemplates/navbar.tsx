@@ -58,14 +58,19 @@ const Sidebar = ({ children, id, title, menuList }: SidebarProps) => {
                         <li key={index} className="relative group">
                             <a
                                 href={item.path}
-                                className="text-black uppercase font-bold hover:text-[#2fb7dd] transition-colors text-sm"
+                                className={`uppercase font-bold transition-colors text-sm ${item.id === id
+                                    ? "text-[#2fb7dd]"
+                                    : "text-black hover:text-[#2fb7dd]"
+                                    }`}
                             >
                                 {item.label}
                             </a>
+
                             <span
-                                className={`absolute left-0 bottom-[-5px] h-[3px] w-0 bg-[#2fb7dd] group-hover:w-full transition-all duration-500 ${
-                                    item.id === id ? "w-full" : ""
-                                }`}
+                                className={`absolute left-0 bottom-[-5px] h-[3px] transition-all duration-500 ${item.id === id
+                                    ? "w-full bg-[#2fb7dd]"
+                                    : "w-0 group-hover:w-full group-hover:bg-[#2fb7dd]"
+                                    }`}
                             ></span>
                         </li>
                     ))}
@@ -102,7 +107,7 @@ const Sidebar = ({ children, id, title, menuList }: SidebarProps) => {
                                 </li>
                             ))}
                             {isManager && (
-                                <li>    
+                                <li>
                                     <Link
                                         href="/manager/dashboard"
                                         className="flex items-center gap-2 px-4 py-3 bg-[#0f172a] text-white rounded-lg text-xs font-semibold uppercase hover:bg-[#1e293b] transition-colors"

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 
 const Shop = () => (
-    <div className="px-50 py-10 min-w-full mx-auto bg-slate-100">
+    <div className="px-50 pt-24 min-w-full mx-auto bg-slate-100">
         {/* Header */}
         <div className="flex justify-between items-start flex-wrap gap-4 mb-10">
             <div>
@@ -101,7 +101,7 @@ const Shop = () => (
                 <div className='py-3 font-medium'>
                     <Link href="/sales/shop/transaction/model2" passHref>
                         <button
-                            className="w-full bg-cyan-400 text-white text-sm px-8 py-3 rounded border transition-all duration-300 transform hover:scale-105">
+                            className="w-full bg-cyan-400 text-white text-sm px-8 py-3 rounded border transition-all duration-300 transform hover:bg-cyan-500">
                             Get Your Porsche
                         </button>
                     </Link>

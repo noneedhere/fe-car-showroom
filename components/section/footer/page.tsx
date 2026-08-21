@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className="bg-[#060B1D] w-full h-[659px] flex flex-col items-center justify-center px-[120px] pt-24 pb-16">
-            <div id="footer" className='bg-red w-full h-full flex flex-row gap-44 mb-12 justify-center border-b border-[#9899A6]'>
+            <div id="footer" className='bg-red w-full h-full flex flex-row gap-44 mb-12 justify-center border-b border-[#9899A6] text-white'>
                 <div className='flex flex-col'>
                     <h1 className='text-[24px] mb-7 font-bold'>Porsche</h1>
                     <p className='text-[16px] w-[280px]'>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className='flex flex-col gap-5'>
                         <div className='flex flex-row items-center'>
                             <img src="/images/location.png" alt="" className='w-8 h-auto mr-4' />
-                            <p className='text-[16px]'>Kos Kucing, Malang</p>
+                            <p className='white text-[16px]'>Kos Kucing, Malang</p>
                         </div>
 
                         <div className='flex flex-row items-center'>
